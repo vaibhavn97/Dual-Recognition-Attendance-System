@@ -1,0 +1,138 @@
+{% block content %}
+
+
+
+
+{% comment %} With properview required view {% endcomment %}
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="UniApps - University Exam ERP">
+    <meta name="author" content="WeShineTech">
+    <meta name="keywords" content="uniapps university exam erp">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link rel="stylesheet" type="text/css" href="//lib.weshinetech.in/lib/itx/priv/static/adminkit/css/light.css">
+    <!-- misc-->
+    <link rel="stylesheet" type="text/css" href="//lib.weshinetech.in/lib/itx/priv/static/adminkit/css/fixedColumns.bootstrap5.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+    <!-- keep this disabled-->
+    <script>WebSocket = undefined;</script>
+  </head>
+  <body data-theme="dark" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
+    <div class="wrapper">
+            <nav id="sidebar" class="sidebar js-sidebar">
+                <div class="sidebar-content js-simplebar   text-emphasis-primary"><a href="/" class="sidebar-brand"><span class="sidebar-brand-text text-uppercase"><img style="width: 14%;" src="/site/static/images/wcoe.jpg" class="align-middle rounded-circle mx-1"><span class="align-middle">wcoe</span></span></a>
+                    <div><ul class="sidebar-nav list">
+                        <li class="sidebar-item  listitem">
+                            <li class="sidebar-item  listitem">
+                            <!-- {% comment %} <a href="/index?mode=view" class="sidebar-link wfid_temp1102639106 link"  data-ajax="false"> {% endcomment %} -->
+                        </li>
+                    </ul></div>
+                </div>
+            </nav>
+
+        
+      
+      <div class="main">
+        <div class="dropdown-menu dropdown-menu-end"><a href="/myprofile" class="dropdown-item"><i data-feather="user" class="align-middle me-1"></i> Profile</a>
+          <div class="dropdown-divider"></div><a href="/itxlogout" class="dropdown-item"><i data-feather="power" class="align-middle me-1"></i>Log out</a>
+        </div>
+        
+
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+            <div class="container-fluid">
+                <a class=" navbar-brand sidebar-toggle js-sidebar-toggle"><i class="hamburger align-self-center"></i></a> 
+              <form class="d-flex" >
+                <a id="logout-button" class="btn btn-danger me-2" href="/login/logout">Logout</a>
+              </form>
+            </div>
+          </nav>
+          
+        <!-- <button id="logout-button">Logout</button> -->
+        <main class="px-3 py-4">
+          <div class="container-fluid"><div class="card wfid_temp1102641090" ><ul class="list-group list-group-flush wfid_temp1102641154 list" ><li class="list-group-item wfid_temp1102641218 listitem" >Home</li><div class="container"><div class="container-fluid">
+            <h1 style="text-align:center; margin-top: 3rem;">Welcome to Teacher Portal !</h1>
+        </div>
+        <!-- <div class="dropdown-divider"></div><a href="/itxlogout" class="dropdown-item"><i data-feather="power" class="align-middle me-1"></i>Log out</a> -->
+        
+        <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <select class="form-select" aria-label="Default select example" name="subject">
+                        <option selected>Select Subject</option>
+                        <option value="EME">EME</option>
+                        <option value="FPGA">FPGA</option>
+                        <option value="DAA">DAA</option>
+                        <option value="Mobile Communication">Mobile Communication</option>
+                    </select>
+                </div>
+        
+                <div class="mb-3">
+                    <input type="date" name="date" id="">
+                </div>
+        
+                <div class="mb-3" style="text-align: center;">
+                    <button type="submit" class="btn btn-primary">Show Attendance</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="containerr">
+            {% if attendance %}
+            {% for item in attendance %}
+               <p>{{item.student.user.username}}</p> 
+            {% endfor %}
+        
+            {% else %}
+               <p>No Lecture </p>
+            {% endif %}
+        </div>
+            
+                
+                
+        </main>
+        <div id="myModal" tabindex="-1" aria-modal="true" role="dialog" style="z-index: 2000;" class="modal fade">
+          <div role="document" class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-secondary">Close</button>
+              </div>
+              <div class="modal-body m-3">
+                <p class="mb-0"></p><div class="modal-body wfid_myModalBody wfid_temp1102641474" ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="div"><div class="spinner-border text-danger p-2 m-3 wfid_temp1102641538 spinner" style="display:none;position: fixed; bottom: 0; right: 0; 
+      z-index: 10000; font-size: 2rem;" ><img class="wfid_temp1102641602 image"  src=""/></div></div>
+      </div>
+    </div>
+    <script type="text/javascript" charset="utf-8" src="//lib.weshinetech.in/lib/itx/priv/static/adminkit/js/lib.2.js"></script>
+    <script type="text/javascript" charset="utf-8" src="//lib.weshinetech.in/lib/itx/priv/static/adminkit/js/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="//lib.weshinetech.in/lib/itx/priv/static/adminkit/js/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="//lib.weshinetech.in/lib/itx/priv/static/external/datepicker/bootstrap-datepicker.min.js"></script>
+    <script>Nitrogen.$set_param('pageContext', 'CfimEfaZULO4onTOWFb87NQPC7eVuBZXtLcD6kO2eLISDTo3_q1pK_fnm4TPJLfNnezUW1fI9bpCcxFBMBRONLS4oUlM2TuKDZ3EHSbUy0_15izmLuc_jcekb11hgIIaOO6KkAuOtHDmj_ecY9JQMNzSnlPIwlJHlfavlyBXF6U344ub-gnjuR6di2j6Kn9TmDEtWisg5iKQISFTvnEArWhnWTPG1j17ce-F8X4KzUiwUCJLmTgQK3pi68z_f2AJLVmQWkPZeGJQ455oKgsoiNyakSjqmp5rvx9MsVJ8W17GeQO9Y_DJrPi9lAKRf-3KuSicxQ');
+</script>
+    <script>
+  $('.btn-success-outline').addClass('btn-outline-success').removeClass('btn-success-outline');
+  $('.btn-primary-outline').addClass('btn-outline-primary').removeClass('btn-primary-outline');
+  $('.btn-danger-outline').addClass('btn-outline-danger').removeClass('btn-danger-outline');
+  $('.btn-secondary-outline').addClass('btn-outline-secondary').removeClass('btn-secondary-outline');
+  $('.btn-warning-outline').addClass('btn-outline-warning').removeClass('btn-warning-outline');
+  $('.btn-info-outline').addClass('btn-outline-info').removeClass('btn-info-outline');
+  $('.pull-sm-right').addClass('float-sm-end').removeClass('pull-sm-right');
+  $('.font-weight-bold').addClass('fw-bold').removeClass('font-weight-bold');
+</script>
+  </body>
+</html>
+
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="d-flex justify-content-center  align-items-center" style="height: 20rem;">
+  <div>
+    <form style="width: 40vh;" method="post">
+      <h2 class="text-center my-2 py-3">Student Login</h2>
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Enter User Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="username" name="username">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Enter Passowrd</label>
+        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password" name="password">
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-danger">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

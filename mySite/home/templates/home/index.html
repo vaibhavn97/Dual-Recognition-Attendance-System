@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="d-flex justify-content-center  align-items-center" style="height: 20rem;">
+    <a type="button" href="{% url 's-login'%}" class="btn btn-primary btn-lg m-2">Student Login</a>
+    <a type="button" href="{% url 't-login' %}" class="btn btn-danger btn-lg m-2">Teacher Login</a>
+</div>
+
+{% endblock content %}
